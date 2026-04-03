@@ -1,101 +1,66 @@
-# Counterfactual Inflation Analysis: Ukraine vs Euro Area
+# Counterfactual Inflation Analysis: Ukraine and the Euro Area
 
-##  Project Overview
+## Project Overview
 
-This project is developed as part of the **Quantitative Methods in Finance** course (M2, Université Paris 1 Panthéon-Sorbonne).
+This project investigates how Ukrainian inflation would have evolved if Ukraine had been part of the Euro Area.
 
-The objective is to construct a **counterfactual inflation path for Ukraine** under the hypothetical scenario in which Ukraine had been part of the **Euro Area**.
-
-The analysis combines:
-- a **monetary regime study**,
-- a **structural macroeconometric model (VAR/SVAR)**,
-- and a **counterfactual simulation based on shock replacement**.
+The objective is to construct a counterfactual inflation path by combining:
+- Ukrainian inflation data,
+- Euro Area inflation dynamics,
+- a structural VAR framework.
 
 ---
 
-## Research Question
+## Methodology
 
-> How would Ukraine’s inflation dynamics have evolved if its monetary policy had been governed by the European Central Bank?
+The analysis follows three main steps:
 
----
+1. **Data construction**
+   - Ukraine CPI (monthly) is converted into year-on-year inflation.
+   - Euro Area inflation is computed as the average across countries.
+   - Industrial production is used as a proxy for output.
 
-##  Methodology
+2. **VAR estimation**
+   - Two VAR models are estimated:
+     - Ukraine (inflation, output)
+     - Euro Area (inflation, output)
 
-The approach follows three main steps:
-
-### 1. Monetary Regime Analysis (Part A)
-
-We document Ukraine’s monetary regimes (exchange rate regimes, crises, inflation targeting) and show that the effect of Euro Area membership is **time-varying**.
-
----
-
-### 2. Econometric Framework (Part B)
-
-We estimate a **bivariate VAR model** for both Ukraine and the Euro Area using:
-
-- Inflation (year-on-year)
-- Output proxy (industrial production growth)
-
-We then apply a **Blanchard-Quah identification** to decompose shocks into:
-- **Demand shocks** (no long-run effect on output)
-- **Supply shocks** (permanent effects)
+3. **Counterfactual simulation**
+   - Ukraine keeps its own supply shocks.
+   - Euro Area demand shocks are imposed.
+   - A dynamic simulation produces the counterfactual inflation path.
 
 ---
 
-### 3. Counterfactual Simulation
+## Key Results
 
-We construct a counterfactual path where:
+- Counterfactual inflation is significantly **less volatile**.
+- The **average inflation level remains similar**.
+- Differences are strongest during crisis periods.
 
-- Ukraine **keeps its own supply shocks**
-- but **inherits Euro Area demand shocks**
-
-Formally:
-
-e^{CF}_{d,t} = (1 - τ_t)e^{UKR}_{d,t} + τ_t e^{EA}_{d,t}
-
-e^{CF}_{s,t} = e^{UKR}_{s,t}
-
-where τ_t captures the time-varying intensity of Euro Area membership.
+This suggests that monetary regime mainly affects **inflation stability**, not its level.
 
 ---
 
-##  Data
+## Limitations
 
-### Core datasets (provided)
-- Euro Area inflation (ECB / panel)
-- Ukraine CPI (monthly index → reconstructed YoY inflation)
-
-### External datasets
-- Industrial Production Index (Eurostat):
-  - Euro Area (EA20)
-  - Ukraine (or external source if missing)
+- Short sample period (post-2021)
+- Industrial production used as output proxy
+- Structural identification relies on Cholesky decomposition
 
 ---
 
-##  Project Structure
+## Files
 
-yoav_qmf_project/
-│
-├── notebook.ipynb        # Main analysis
-├── data/                 # Raw data (Eurostat + external)
-├── figures/              # Output plots
-├── output/               # Processed datasets
-├── requirements.txt      # Dependencies
-└── README.md             # Project documentation
+- `notebook.ipynb` → main analysis
+- `data/` → input datasets
+- `figures/` → generated plots
+- `output/` → results and tables
 
 ---
-
-##  Installation
-
-Create environment:
-
-```bash
-conda create -n qmf_env python=3.11
-conda activate qmf_env
-pip install -r requirements.txt'''
 
 ## Author
 
- Yoav Cohen
-M2 Quantitative Finance
+Yoav Cohen  
+M2 Quantitative Methods in Finance  
 Université Paris 1 Panthéon-Sorbonne
