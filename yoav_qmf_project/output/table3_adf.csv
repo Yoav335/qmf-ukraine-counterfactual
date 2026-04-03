@@ -1,0 +1,3 @@
+Variable,ADF stat,p-value,Lags,N,1%,5%,Stationary (5%)
+UA inflation (YoY),-2.961,0.0387,13,238,-3.458,-2.874,Yes
+EA inflation (YoY),-2.473,0.1222,12,239,-3.458,-2.874,No
